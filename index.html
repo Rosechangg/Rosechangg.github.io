@@ -72,20 +72,7 @@
   .btn-ghost:hover { background: rgba(34,37,76,0.06); }
 
   /* ---------- hero ---------- */
-  .hero { background: var(--blush); padding: 1.5rem 0 0; overflow: hidden; position: relative; }
-  .hero::after {
-    content: ""; position: absolute; inset: 0; pointer-events: none; opacity: 0.55;
-    mix-blend-mode: multiply; background-size: 180px 180px;
-    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix type='matrix' values='0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.05 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
-  }
-  @keyframes rise { from { opacity: 0; transform: translateY(26px); } to { opacity: 1; transform: none; } }
-  .hero-copy > * { animation: rise 0.7s cubic-bezier(0.22, 1, 0.36, 1) both; }
-  .hero-copy > *:nth-child(1) { animation-delay: 0.05s; }
-  .hero-copy > *:nth-child(2) { animation-delay: 0.16s; }
-  .hero-copy > *:nth-child(3) { animation-delay: 0.28s; }
-  .hero-copy > *:nth-child(4) { animation-delay: 0.4s; }
-  .hero-copy > *:nth-child(5) { animation-delay: 0.52s; }
-  .hero-copy > *:nth-child(6) { animation-delay: 0.64s; }
+  .hero { background: var(--blush); padding: 1.5rem 0 0; overflow: hidden; }
   .hero-grid {
     max-width: 1060px; margin: 0 auto; padding: 0 2rem;
     display: grid; grid-template-columns: 1.2fr 0.8fr; align-items: center; gap: 2rem;
@@ -103,46 +90,18 @@
   .hero h1 .accent::after {
     content: ""; position: absolute; left: 0; right: 0; bottom: 0.08em; height: 0.28em;
     background: var(--pink); opacity: 0.45; z-index: -1; border-radius: 3px;
+    transform-origin: left center; animation: highlight-swipe 0.8s 0.5s cubic-bezier(0.22, 1, 0.36, 1) both;
+  }
+  @keyframes highlight-swipe { from { transform: scaleX(0); } to { transform: scaleX(1); } }
+  @media (prefers-reduced-motion: reduce) {
+    .hero h1 .accent::after { animation: none; }
   }
   .hero .lede { max-width: 30rem; color: var(--navy-soft); margin: 0 0 2rem; font-size: 1.02rem; }
   .hero .lede strong { color: var(--navy); }
-  .rotator-line {
-    font-family: "Playfair Display", Georgia, "Apple SD Gothic Neo", "Malgun Gothic", serif;
-    font-size: clamp(1.3rem, 2.7vw, 1.75rem); color: var(--navy); margin: 0 0 1.3rem;
-  }
-  .rotator-word {
-    display: inline-block; font-weight: 600; padding: 0 0.25rem;
-    background: linear-gradient(transparent 62%, rgba(242,169,160,0.55) 62%);
-  }
-  .rotator-word.out { animation: word-out 0.32s ease both; }
-  .rotator-word.in { animation: word-in 0.32s ease both; }
-  @keyframes word-out { to { opacity: 0; transform: translateY(-12px); } }
-  @keyframes word-in { from { opacity: 0; transform: translateY(14px); } }
   .hero-actions { display: flex; gap: 0.9rem; flex-wrap: wrap; }
-  .btn { transition: transform 0.18s ease, box-shadow 0.18s ease; }
-  .btn:hover { transform: translateY(-2px); box-shadow: 0 6px 16px rgba(34,37,76,0.14); }
-  .hero-stats { display: flex; gap: 2.2rem; margin-top: 2.1rem; }
-  .hero-stats div { display: flex; flex-direction: column; }
-  .hero-stats strong {
-    font-family: "Playfair Display", Georgia, serif; font-size: 1.95rem; font-weight: 600;
-    color: var(--navy); line-height: 1.15; font-variant-numeric: tabular-nums;
-  }
-  .hero-stats span {
-    font-size: 0.74rem; letter-spacing: 0.1em; text-transform: uppercase;
-    color: var(--navy-soft); font-weight: 600;
-  }
   .hero-art { align-self: end; }
-  .hero-fig { position: relative; max-width: 400px; margin: 0 auto; animation: rise 0.9s 0.3s cubic-bezier(0.22, 1, 0.36, 1) both; }
-  .hero-fig::before {
-    content: ""; position: absolute; right: -9%; bottom: -7%; width: 62%; aspect-ratio: 1;
-    border-radius: 50%; background: rgba(242,169,160,0.38); z-index: -1;
-  }
-  .hero-fig::after {
-    content: ""; position: absolute; top: 5%; left: -11%; width: 30%; aspect-ratio: 1;
-    border-radius: 50%; border: 2px solid rgba(34,37,76,0.16); z-index: -1;
-  }
-  .hero-fig img { width: 100%; animation: float 5.5s 1.4s ease-in-out infinite; }
-  @keyframes float { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-8px); } }
+  .hero-fig { position: relative; max-width: 400px; margin: 0 auto; }
+  .hero-fig img { width: 100%; }
   .sparkle {
     position: absolute; width: 22px; height: 22px; opacity: 0;
     animation: twinkle 2.2s ease-in-out infinite;
@@ -157,18 +116,7 @@
   }
   @media (prefers-reduced-motion: reduce) {
     .sparkle { animation: none; opacity: 0.85; transform: none; }
-    .hero-copy > *, .hero-fig, .hero-fig img, .rotator-word, .marquee-track { animation: none !important; }
   }
-
-  /* ---------- marquee ---------- */
-  .marquee { background: var(--navy); overflow: hidden; padding: 0.85rem 0; }
-  .marquee-track { display: flex; gap: 2.4rem; width: max-content; animation: marquee 34s linear infinite; }
-  .marquee-track span {
-    font-family: "Playfair Display", Georgia, serif; font-size: 1rem;
-    color: var(--blush); white-space: nowrap;
-  }
-  .marquee-track i { color: var(--pink); font-style: normal; }
-  @keyframes marquee { to { transform: translateX(-50%); } }
 
   @media (max-width: 760px) {
     .hero-grid { grid-template-columns: 1fr; gap: 0; }
@@ -289,20 +237,15 @@
       <div class="hero-copy">
         <p class="eyebrow">Human-centered AI &middot; HCI &middot; Mobility</p>
         <h1>Hello, I&rsquo;m<br><span class="accent">Rose Chang</span>.</h1>
-        <p class="rotator-line">I design <span class="rotator-word">safer mobility UX</span></p>
         <p class="lede">
-          Senior researcher at <strong>ETRI</strong> (Mi Chang, 장미), studying how people
-          interact with autonomous vehicles and robots through eye-tracking,
-          physiological signals, and machine learning.
+          I&rsquo;m a senior researcher at <strong>ETRI</strong> (Mi Chang, 장미).
+          I study how people interact with autonomous vehicles and robots,
+          turning eye-tracking, physiological signals, and machine learning into safer,
+          more humane mobility experiences.
         </p>
         <div class="hero-actions">
           <a class="btn btn-navy" href="#/publications">View publications</a>
           <a class="btn btn-ghost" href="#/contact">Say hello</a>
-        </div>
-        <div class="hero-stats">
-          <div><strong>11</strong><span>SCIE Journals</span></div>
-          <div><strong>25+</strong><span>Conference Papers</span></div>
-          <div><strong>1</strong><span>Registered Patent</span></div>
         </div>
       </div>
       <div class="hero-art">
@@ -315,13 +258,6 @@
       </div>
     </div>
   </header>
-
-  <div class="marquee" aria-hidden="true">
-    <div class="marquee-track">
-      <span>SIGGRAPH</span><i>&#10038;</i><span>CHI</span><i>&#10038;</i><span>ISMAR</span><i>&#10038;</i><span>Expert Systems with Applications</span><i>&#10038;</i><span>Decision Support Systems</span><i>&#10038;</i><span>Cities</span><i>&#10038;</i><span>Eye-tracking</span><i>&#10038;</i><span>Physiological Signals</span><i>&#10038;</i><span>Graph Neural Networks</span><i>&#10038;</i><span>VR Driving Simulation</span><i>&#10038;</i>
-      <span>SIGGRAPH</span><i>&#10038;</i><span>CHI</span><i>&#10038;</i><span>ISMAR</span><i>&#10038;</i><span>Expert Systems with Applications</span><i>&#10038;</i><span>Decision Support Systems</span><i>&#10038;</i><span>Cities</span><i>&#10038;</i><span>Eye-tracking</span><i>&#10038;</i><span>Physiological Signals</span><i>&#10038;</i><span>Graph Neural Networks</span><i>&#10038;</i><span>VR Driving Simulation</span><i>&#10038;</i>
-    </div>
-  </div>
 
   <section id="works">
     <div class="wrap">
@@ -892,20 +828,4 @@
   }
   window.addEventListener("hashchange", route);
   route();
-
-  const rotatorWords = ["safer mobility UX", "driver-readiness models", "passenger-emotion AI", "interactions with robots"];
-  let rotatorIdx = 0;
-  const rotatorEl = document.querySelector(".rotator-word");
-  if (rotatorEl && !window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
-    setInterval(() => {
-      rotatorEl.classList.add("out");
-      setTimeout(() => {
-        rotatorIdx = (rotatorIdx + 1) % rotatorWords.length;
-        rotatorEl.textContent = rotatorWords[rotatorIdx];
-        rotatorEl.classList.remove("out");
-        rotatorEl.classList.add("in");
-        setTimeout(() => rotatorEl.classList.remove("in"), 340);
-      }, 330);
-    }, 2700);
-  }
 </script>
