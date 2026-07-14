@@ -167,11 +167,11 @@
     display: inline-block; padding: 0.1rem 0.5rem 0.15rem;
     background: linear-gradient(transparent 28%, rgba(242,169,160,0.55) 28%, rgba(242,169,160,0.55) 76%, transparent 76%);
   }
-  .timeline { list-style: none; margin: 0; padding: 0; border-left: 2px solid var(--line); }
+  .timeline { list-style: none; margin: 0 0 0 1rem; padding: 0; border-left: 2px solid var(--line); }
   .timeline li { position: relative; padding: 0 0 1.4rem 2.4rem; }
   .timeline li::before {
     content: ""; position: absolute; left: -7px; top: 0.4em;
-    width: 12px; height: 12px; border-radius: 50%;
+    width: 12px; height: 12px; border-radius: 50%; box-sizing: border-box;
     background: var(--pink); border: 2.5px solid var(--white);
   }
   .tl-date { color: var(--pink); font-size: 0.88rem; font-weight: 700; letter-spacing: 0.05em; font-variant-numeric: tabular-nums; }
