@@ -12,6 +12,7 @@ AI-driven UX · HCI · Autonomous Vehicle & Mobility.
 
 | 날짜 | 내용 |
 |------|------|
+| 2026-07-14 | Publications: 그룹 소제목 확대 + 형광펜 하이라이트 |
 | 2026-07-14 | Publications: 상단 범례(my name·corresponding author) 제거 |
 | 2026-07-14 | About: 홍익대·광운대에 Republic of Korea 표기 추가 |
 | 2026-07-14 | 히어로 일러스트에 반짝이 스파클 3개 트윙클 애니메이션 추가 (v7) |
