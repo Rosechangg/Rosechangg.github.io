@@ -12,6 +12,7 @@ AI-driven UX · HCI · Autonomous Vehicle & Mobility.
 
 | 날짜 | 내용 |
 |------|------|
+| 2026-07-14 | Publications: 웹 검증 서지정보 반영 (전체 저자·권호·페이지·DOI 링크, SAE 2026 정정) |
 | 2026-07-14 | Publications: 그룹 소제목 확대 + 형광펜 하이라이트 |
 | 2026-07-14 | Publications: 상단 범례(my name·corresponding author) 제거 |
 | 2026-07-14 | About: 홍익대·광운대에 Republic of Korea 표기 추가 |
